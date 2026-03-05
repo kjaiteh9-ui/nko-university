@@ -4,6 +4,8 @@ import { useState, useEffect, useCallback } from 'react';
 import type { SupportedLang } from '@/lib/types';
 import { loadTranslations, getSavedLang, saveLang, isRTL, getLangConfig } from '@/lib/i18n';
 
+const LANG_EVENT = 'nko-lang-change';
+
 interface UseTranslationReturn {
   t: (key: string, vars?: Record<string, string>) => string;
   lang: SupportedLang;
@@ -17,27 +19,37 @@ export function useTranslation(): UseTranslationReturn {
   const [translations, setTranslations] = useState<Record<string, string>>({});
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    const saved = getSavedLang();
-    setLangState(saved);
-    loadTranslations(saved).then(t => {
-      setTranslations(t);
-      setIsLoading(false);
-    });
-  }, []);
-
-  const setLang = useCallback((newLang: SupportedLang) => {
-    saveLang(newLang);
+  const applyLang = useCallback((newLang: SupportedLang) => {
     setLangState(newLang);
     setIsLoading(true);
     loadTranslations(newLang).then(t => {
       setTranslations(t);
       setIsLoading(false);
-      // Update html dir attribute
+    });
+    if (typeof document !== 'undefined') {
       document.documentElement.dir = isRTL(newLang) ? 'rtl' : 'ltr';
       document.documentElement.lang = newLang;
-    });
+    }
   }, []);
+
+  useEffect(() => {
+    applyLang(getSavedLang());
+  }, [applyLang]);
+
+  // Listen for language changes from any component
+  useEffect(() => {
+    const handler = (e: Event) => {
+      applyLang((e as CustomEvent<SupportedLang>).detail);
+    };
+    window.addEventListener(LANG_EVENT, handler);
+    return () => window.removeEventListener(LANG_EVENT, handler);
+  }, [applyLang]);
+
+  const setLang = useCallback((newLang: SupportedLang) => {
+    saveLang(newLang);
+    applyLang(newLang);
+    window.dispatchEvent(new CustomEvent(LANG_EVENT, { detail: newLang }));
+  }, [applyLang]);
 
   const translate = useCallback(
     (key: string, vars?: Record<string, string>) => {
@@ -52,13 +64,5 @@ export function useTranslation(): UseTranslationReturn {
     [translations]
   );
 
-  const config = getLangConfig(lang);
-
-  return {
-    t: translate,
-    lang,
-    setLang,
-    dir: config.dir,
-    isLoading,
-  };
+  return { t: translate, lang, setLang, dir: getLangConfig(lang).dir, isLoading };
 }

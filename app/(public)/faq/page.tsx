@@ -15,9 +15,9 @@ export default function FAQPage() {
     { q: t('faq.q4'), a: t('faq.a4') },
     { q: t('faq.q5'), a: t('faq.a5') },
     { q: 'What is the N\'Ko script?', a: 'N\'Ko (ߒߞߏ) is an alphabet created in 1949 by Solomana Kante specifically for the Manding language family of West Africa. It is written right-to-left and has 27 letters (7 vowels + 19 consonants + 1 extension).' },
-    { q: 'Do I need to create an account?', a: 'You can browse courses and the landing page without an account. To access lessons, quizzes, the AI tutor, and track your progress, you need a free account.' },
+    { q: 'Do I need to create an account?', a: 'You can browse courses and the landing page without an account. To access lessons, quizzes, the expert tutor, and track your progress, you need a free account.' },
     { q: 'Can I skip the placement test?', a: 'Yes! The placement test is optional. If you skip it, you\'ll start at Level 1 — the perfect place to begin if you\'ve never seen N\'Ko before.' },
-    { q: 'How does the AI tutor know about my lesson?', a: 'When you open the AI tutor chat on a lesson page, the AI automatically receives context about your current lesson, your level, and your preferred language. It can answer questions specific to what you\'re studying.' },
+    { q: 'How does the tutor know about my lesson?', a: 'When you open the tutor chat on a lesson page, the system automatically receives context about your current lesson, your level, and your preferred language. It can answer questions specific to what you\'re studying.' },
   ];
 
   return (

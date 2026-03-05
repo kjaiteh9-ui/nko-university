@@ -1,0 +1,140 @@
+{
+  "name": "NKO_Forms_Combined",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "nko-support",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "a1000001-0001-0001-0001-a10000000001",
+      "name": "Webhook Support",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [240, 200]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "nko-contact",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "a2000002-0002-0002-0002-a20000000002",
+      "name": "Webhook Contact",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [240, 420]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "mode": "id",
+          "value": "1IEZs8a2QiZCHbiONdlWrqjqGTWJUhB-Qm2LzcDaQAuU"
+        },
+        "sheetName": {
+          "mode": "byName",
+          "value": "NKO_Support"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {
+            "timestamp": "={{ $json.timestamp }}",
+            "name": "={{ $json.name }}",
+            "email": "={{ $json.email }}",
+            "whatsapp": "={{ $json.whatsapp }}",
+            "problem": "={{ $json.problem }}",
+            "type": "={{ $json.type }}"
+          }
+        },
+        "options": {}
+      },
+      "id": "b1000003-0003-0003-0003-b10000000003",
+      "name": "Sheets - NKO_Support",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [480, 200],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "UXGzt0jGfgbDijpC",
+          "name": "Google Sheets account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "mode": "id",
+          "value": "1IEZs8a2QiZCHbiONdlWrqjqGTWJUhB-Qm2LzcDaQAuU"
+        },
+        "sheetName": {
+          "mode": "byName",
+          "value": "NKO_Contact"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {
+            "timestamp": "={{ $json.timestamp }}",
+            "name": "={{ $json.name }}",
+            "email": "={{ $json.email }}",
+            "subject": "={{ $json.subject }}",
+            "message": "={{ $json.message }}",
+            "type": "={{ $json.type }}"
+          }
+        },
+        "options": {}
+      },
+      "id": "b2000004-0004-0004-0004-b20000000004",
+      "name": "Sheets - NKO_Contact",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [480, 420],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "UXGzt0jGfgbDijpC",
+          "name": "Google Sheets account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\"success\": true}"
+      },
+      "id": "c1000005-0005-0005-0005-c10000000005",
+      "name": "Respond - Support",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [720, 200]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\"success\": true}"
+      },
+      "id": "c2000006-0006-0006-0006-c20000000006",
+      "name": "Respond - Contact",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [720, 420]
+    }
+  ],
+  "connections": {
+    "Webhook Support": {
+      "main": [[{ "node": "Sheets - NKO_Support", "type": "main", "index": 0 }]]
+    },
+    "Sheets - NKO_Support": {
+      "main": [[{ "node": "Respond - Support", "type": "main", "index": 0 }]]
+    },
+    "Webhook Contact": {
+      "main": [[{ "node": "Sheets - NKO_Contact", "type": "main", "index": 0 }]]
+    },
+    "Sheets - NKO_Contact": {
+      "main": [[{ "node": "Respond - Contact", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": { "executionOrder": "v1" }
+}

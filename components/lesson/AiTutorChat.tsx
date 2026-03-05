@@ -17,7 +17,7 @@ export default function AiTutorChat({ lessonId, lessonTitle, level, userId }: Pr
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       role: 'assistant',
-      content: `Hello! I'm Musa, your N'Ko AI tutor. I'm here to help you with "${lessonTitle}". Ask me anything about this lesson!`,
+      content: `Hello! I'm Musa, your N'Ko expert tutor. I'm here to help you with "${lessonTitle}". Ask me anything about this lesson!`,
       timestamp: new Date().toISOString(),
     },
   ]);
@@ -74,7 +74,7 @@ export default function AiTutorChat({ lessonId, lessonTitle, level, userId }: Pr
         </div>
         <div>
           <p className="text-sm font-semibold" style={{ color: 'var(--white)' }}>{t('lesson.ai_tutor')}</p>
-          <p className="text-xs" style={{ color: 'var(--textd)' }}>Musa — Your AI Tutor</p>
+          <p className="text-xs" style={{ color: 'var(--textd)' }}>Musa — Your Expert Tutor</p>
         </div>
         <div className="ml-auto flex items-center gap-1.5">
           <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse-slow" />

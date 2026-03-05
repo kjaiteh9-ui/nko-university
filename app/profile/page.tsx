@@ -116,7 +116,7 @@ export default function ProfilePage() {
                 ))}
               </select>
               <p className="text-xs mt-1.5" style={{ color: 'var(--textd)' }}>
-                This is the language used for the AI tutor and lesson explanations.
+                This is the language used for the tutor and lesson explanations.
               </p>
             </div>
 

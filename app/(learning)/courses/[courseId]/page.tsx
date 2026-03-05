@@ -166,7 +166,7 @@ export default function CourseDetailPage() {
             <div className="card-gold text-center p-8 mt-8">
               <h3 className="mb-3">Sign up to Track Your Progress</h3>
               <p className="mb-4" style={{ color: 'var(--text)' }}>
-                Create a free account to unlock all lessons, track your progress, and use the AI tutor.
+                Create a free account to unlock all lessons, track your progress, and use the expert tutor.
               </p>
               <Link href="/signup" className="btn-gold">
                 Create Free Account <ArrowRight size={16} />

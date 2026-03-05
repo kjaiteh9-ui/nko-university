@@ -18,8 +18,8 @@ export default function HomePage() {
   const features = [
     {
       icon: <Brain size={24} style={{ color: 'var(--gold)' }} />,
-      title: 'AI-Generated Lessons',
-      desc: 'Every lesson is created by AI, adapted to your level and preferred language.',
+      title: 'Expert-Crafted Lessons',
+      desc: 'Every lesson is carefully designed for your level and preferred language.',
     },
     {
       icon: <Zap size={24} style={{ color: 'var(--terra)' }} />,
@@ -33,8 +33,8 @@ export default function HomePage() {
     },
     {
       icon: <Users size={24} style={{ color: 'var(--terra)' }} />,
-      title: '24/7 AI Tutor',
-      desc: 'Ask anything, anytime. Your AI tutor knows your lesson and your level.',
+      title: '24/7 Expert Tutor',
+      desc: 'Ask anything, anytime. Your tutor knows your current lesson and level.',
     },
     {
       icon: <Award size={24} style={{ color: 'var(--gold)' }} />,
@@ -44,7 +44,7 @@ export default function HomePage() {
     {
       icon: <CheckCircle size={24} style={{ color: 'var(--terra)' }} />,
       title: 'Instant Quizzes',
-      desc: 'AI-graded quizzes after every lesson to reinforce your learning.',
+      desc: 'Auto-graded quizzes after every lesson to reinforce your learning.',
     },
   ];
 
@@ -113,7 +113,7 @@ export default function HomePage() {
             <div className="tag mb-4">Why NKO University</div>
             <h2>Learn the Way Your Brain Works</h2>
             <p className="mt-4 max-w-lg mx-auto" style={{ color: 'var(--text)' }}>
-              No textbooks. No human teachers. Just you and an AI that knows exactly where you are in your journey.
+              No textbooks. No waiting. Just you and an expert system that knows exactly where you are in your journey.
             </p>
           </div>
 
@@ -209,7 +209,7 @@ export default function HomePage() {
             {[
               { name: 'Mamadou D.', country: 'Guinée', text: 'Enfin une plateforme qui honore notre héritage. Le tuteur IA est incroyable!', level: 'Level 3' },
               { name: 'Aisha K.', country: 'Mali', text: 'I never thought I could read N\'Ko in just 2 months. The AI lessons are perfect.', level: 'Level 2' },
-              { name: 'Ibrahim S.', country: 'Senegal', text: 'The AI tutor answers my questions at 2am when I study. No human teacher can do that.', level: 'Level 4' },
+              { name: 'Ibrahim S.', country: 'Senegal', text: 'The tutor answers my questions at 2am when I study. Always available, any time.', level: 'Level 4' },
             ].map((t, i) => (
               <div key={i} className="card">
                 <div className="flex gap-1 mb-3">

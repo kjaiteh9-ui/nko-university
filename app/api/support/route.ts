@@ -45,11 +45,11 @@ export async function POST(req: NextRequest) {
         host: process.env.SMTP_HOST,
         port: Number(process.env.SMTP_PORT ?? 587),
         secure: false,
-        auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS },
+        auth: { user: process.env.SMTP_USER, pass: (process.env.SMTP_PASS ?? '').replace(/\s/g, '') },
       });
 
       await transporter.sendMail({
-        from: `"NKO University" <${fromEmail}>`,
+        from: `"NKO University" <${process.env.SMTP_USER}>`,
         to: toEmail,
         subject: `[Student Support] Issue from ${name ?? email}`,
         html: `

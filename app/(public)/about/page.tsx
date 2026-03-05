@@ -1,7 +1,8 @@
 'use client';
 
+import Image from 'next/image';
 import { useTranslation } from '@/lib/hooks/useTranslation';
-import { BookOpen, Brain, Globe, Users, Heart, Award } from 'lucide-react';
+import { BookOpen, Globe, Users, Heart, Award, Lightbulb } from 'lucide-react';
 
 export default function AboutPage() {
   const { t } = useTranslation();
@@ -33,18 +34,18 @@ export default function AboutPage() {
                 At NKO University, we believe that language is identity. When a language loses its written form, part of a people&apos;s soul is lost. Our mission is to reverse that — to put the power of N&apos;Ko literacy in the hands of every person with African roots, wherever they are in the world.
               </p>
               <p style={{ color: 'var(--text)' }}>
-                We use modern AI not to replace culture, but to amplify it. Every lesson, every quiz, every tutoring session draws from authentic Manding traditions, history, and language — just delivered through the most powerful educational technology ever built.
+                We use modern technology not to replace culture, but to amplify it. Every lesson, every quiz, every tutoring session draws from authentic Manding traditions, history, and language — delivered at the highest standard.
               </p>
             </div>
             <div className="space-y-4">
               {[
-                { icon: <Brain size={20} />, title: 'AI-First Education', desc: 'Personalized learning paths powered by GPT-4o, available 24/7 in 6 languages.' },
-                { icon: <Globe size={20} />, title: 'Global Reach', desc: 'Students from Guinea, Mali, Senegal, Côte d\'Ivoire, and the diaspora worldwide.' },
+                { icon: <Lightbulb size={20} />, title: 'Expert-Crafted Education', desc: 'Personalized learning paths, available 24/7 in 6 languages.' },
+                { icon: <Globe size={20} />, title: 'Global Reach', desc: "Students from Guinea, Mali, Senegal, Côte d'Ivoire, and the diaspora worldwide." },
                 { icon: <Heart size={20} />, title: 'Free for Everyone', desc: 'Education is a right. Our full platform is free, always.' },
-                { icon: <Award size={20} />, title: 'Cultural Preservation', desc: 'Every lesson carries authentic N\'Ko script, proverbs, and Manding heritage.' },
+                { icon: <Award size={20} />, title: 'Cultural Preservation', desc: "Every lesson carries authentic N'Ko script, proverbs, and Manding heritage." },
               ].map((item, i) => (
                 <div key={i} className="card flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0" style={{ background: 'rgba(200,165,80,0.1)', color: 'var(--gold)' }}>
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ background: 'rgba(200,165,80,0.1)', color: 'var(--gold)', flexShrink: 0 }}>
                     {item.icon}
                   </div>
                   <div>
@@ -63,13 +64,26 @@ export default function AboutPage() {
         <div className="container max-w-2xl mx-auto text-center">
           <div className="tag mb-6 mx-auto">{t('about.founder')}</div>
           <div className="card-gold p-10">
-            <div className="w-20 h-20 rounded-full mx-auto mb-6 flex items-center justify-center text-2xl font-bold" style={{ background: 'var(--forest)', border: '2px solid var(--border)', color: 'var(--gold)', fontFamily: 'Plus Jakarta Sans' }}>
-              KD
+            {/* Founder photo — place karlang_founder.jpg in /public/ to show it */}
+            <div className="mx-auto mb-6" style={{ width: 120, height: 120, position: 'relative' }}>
+              <div
+                className="w-full h-full rounded-full overflow-hidden flex items-center justify-center text-2xl font-bold"
+                style={{ background: 'var(--forest)', border: '3px solid var(--gold)', color: 'var(--gold)', fontFamily: 'Plus Jakarta Sans' }}
+              >
+                <Image
+                  src="/karlang_founder.jpg"
+                  alt="Karlang Diate"
+                  fill
+                  style={{ objectFit: 'cover', borderRadius: '50%' }}
+                  onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                />
+                <span style={{ position: 'absolute' }}>KD</span>
+              </div>
             </div>
             <h3 className="mb-2">Karlang Diate</h3>
             <p className="tag mb-6 mx-auto">Founder &amp; CEO</p>
             <p style={{ color: 'var(--text)' }}>
-              &ldquo;I built NKO University because I believe every African person deserves to read and write in a language that is truly theirs. N&apos;Ko is not just an alphabet — it is a revolution. And AI is the tool to bring that revolution to every phone, every home, every heart across Africa and the diaspora.&rdquo;
+              &ldquo;I built NKO University because I believe every African person deserves to read and write in a language that is truly theirs. N&apos;Ko is not just an alphabet — it is a revolution. And technology is the bridge to bring that revolution to every phone, every home, every heart across Africa and the diaspora.&rdquo;
             </p>
           </div>
         </div>

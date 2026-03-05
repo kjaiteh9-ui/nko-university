@@ -7,27 +7,22 @@
   "nav.signup": "ߟߊ߬ߓߊ߰ ",
   "nav.dashboard": "ߘߎ߰ ߘߌ ߛߌ߰",
   "nav.logout": "ߞߊ߲ ߘߌ",
-
-  "hero.eyebrow": "ߟߊ߬ߓߊ߰ ߓߟߏ IA",
+  "hero.eyebrow": "ߒߞߏ ߞߊ߲ ߠߊߓߊ߲",
   "hero.title": "ߒߞߏ ߟߊ߬ߓߊ߰",
-  "hero.subtitle": "ߒߞߏ ߘߐ߫ ߟߊ߬ߓߊ߰ ߛ߭ߊ߬ ߡߐ߬ ߤߊ߲ IA ߓߟߏ. ߓߊ߯ ߛ߭ IA ߟߊ߬ ߡߍ߲ ߓߊ߯ ߛ߭.",
+  "hero.subtitle": "ߒߞߏ ߞߊ߲ ߟߊߓߊ߲ ߞߊ߬ ߓߊ߯ ߕߊ",
   "hero.cta_primary": "ߟߊ߬ ߘߌ ߞߏ߫",
   "hero.cta_secondary": "ߛߓߍ ߛ߭ ߘߌ",
-
   "courses.free": "ߞߏ ߘߌ",
   "courses.start": "ߟߊ߬ ߘߌ",
   "courses.level": "ߝߌ߬ ߘߎ",
-
-  "lesson.ai_tutor": "IA ߒ ߘߌ ߤߊ߲",
+  "lesson.ai_tutor": "ߡߍ߲ ߠߊߓߊ߲",
   "lesson.quiz": "ߤߊ߲ ߛ߭",
   "lesson.exercises": "ߟߊ߬ ߛ߭",
   "lesson.correct": "ߞߏ ߘߌ!",
   "lesson.wrong": "ߞߏ ߘߌ ߛ߭ — ߟߊ ߘߌ",
-
-  "footer.tagline": "ߒߞߏ ߟߊ߬ IA ߓߟߏ",
+  "footer.tagline": "ߒߞߏ ߞߊ߲ ߟߊߓߊ߲",
   "footer.founder": "ߞߊ߲ ߘߌ Karlang Diate",
   "footer.rights": "ߞߏ ߘߌ ߛ߭.",
-
   "loading": "ߟߊ߬...",
   "save": "ߞߊ߲",
   "cancel": "ߘߎ ߘߌ"

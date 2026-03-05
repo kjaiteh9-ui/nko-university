@@ -11,17 +11,15 @@
   "nav.profile": "الملف الشخصي",
   "nav.logout": "تسجيل الخروج",
   "nav.admin": "لوحة الإدارة",
-
-  "hero.eyebrow": "تعلم بالذكاء الاصطناعي",
+  "hero.eyebrow": "تعلم اللغات الأفريقية",
   "hero.title": "أتقن لغة N'Ko واللغات الأفريقية",
-  "hero.subtitle": "أول جامعة إلكترونية مدعومة بالذكاء الاصطناعي للغة N'Ko. تعلم من الصفر مع دروس مخصصة واختبارات تكيفية ومعلم ذكاء اصطناعي متاح على مدار الساعة.",
+  "hero.subtitle": "أول جامعة في العالم للغة N'Ko. تعلم من الصفر مع دروس مخصصة واختبارات تكيفية ومعلم خبير — كل ذلك مجانًا.",
   "hero.cta_primary": "ابدأ التعلم مجاناً",
   "hero.cta_secondary": "استكشف الدورات",
   "hero.stat_students": "طالب مسجل",
-  "hero.stat_lessons": "درس بالذكاء الاصطناعي",
+  "hero.stat_lessons": "دروس",
   "hero.stat_languages": "لغات",
   "hero.stat_free": "مجاني للأبد",
-
   "courses.title": "دوراتنا",
   "courses.subtitle": "ابدأ من الصفر. حقق الطلاقة. كل شيء بالذكاء الاصطناعي.",
   "courses.levels": "6 مستويات",
@@ -30,8 +28,7 @@
   "courses.continue": "متابعة",
   "courses.lessons": "دروس",
   "courses.level": "المستوى",
-
-  "lesson.ai_tutor": "اسأل المعلم الذكي",
+  "lesson.ai_tutor": "اسأل المعلم",
   "lesson.quiz": "اختبار",
   "lesson.exercises": "تمارين",
   "lesson.next": "الدرس التالي",
@@ -45,7 +42,6 @@
   "lesson.wrong": "ليس تماماً — حاول مجدداً",
   "lesson.explanation": "الشرح",
   "lesson.min": "دقيقة",
-
   "dashboard.welcome": "مرحباً بعودتك",
   "dashboard.level": "المستوى الحالي",
   "dashboard.next_lesson": "متابعة التعلم",
@@ -54,14 +50,12 @@
   "dashboard.completed": "دروس مكتملة",
   "dashboard.score_avg": "متوسط الدرجات",
   "dashboard.start_journey": "ابدأ رحلتك",
-
   "placement.title": "اختبار تحديد المستوى",
   "placement.subtitle": "دعنا نحدد مستواك. يستغرق حوالي 5 دقائق.",
   "placement.skip": "تخطي — ابدأ من المستوى 1",
   "placement.start": "ابدأ الاختبار",
   "placement.submit": "إرسال الاختبار",
   "placement.result": "مستواك",
-
   "auth.email": "البريد الإلكتروني",
   "auth.password": "كلمة المرور",
   "auth.name": "الاسم الكامل",
@@ -78,12 +72,10 @@
   "auth.or": "أو",
   "auth.error_invalid": "البريد الإلكتروني أو كلمة المرور غير صحيحة.",
   "auth.error_exists": "يوجد حساب بهذا البريد الإلكتروني.",
-
   "profile.title": "ملفك الشخصي",
   "profile.save": "حفظ التغييرات",
   "profile.language": "اللغة المفضلة",
   "profile.saved": "تم حفظ الملف الشخصي!",
-
   "contact.title": "تواصل معنا",
   "contact.subtitle": "لديك سؤال؟ نود سماعك.",
   "contact.name": "اسمك",
@@ -93,7 +85,6 @@
   "contact.send": "إرسال الرسالة",
   "contact.success": "تم إرسال الرسالة! سنعود إليك قريباً.",
   "contact.error": "فشل الإرسال. يرجى المحاولة مجدداً.",
-
   "support.title": "دعم الطلاب",
   "support.subtitle": "هل تواجه مشكلة؟ املأ هذا النموذج وسنساعدك.",
   "support.name": "اسمك",
@@ -104,17 +95,14 @@
   "support.send": "إرسال المشكلة",
   "support.success": "تم إرسال مشكلتك! سنتواصل معك قريباً.",
   "support.whatsapp_hint": "أدخل رمز البلد، مثل +966 5x xxx xxxx",
-
-  "footer.tagline": "تعلم N'Ko واللغات الأفريقية بالذكاء الاصطناعي",
+  "footer.tagline": "تعلم N'Ko واللغات الأفريقية",
   "footer.founder": "تأسست بواسطة Karlang Diate",
   "footer.rights": "جميع الحقوق محفوظة.",
-
   "error.not_found": "الصفحة غير موجودة",
   "error.unauthorized": "يجب تسجيل الدخول للوصول إلى هذه الصفحة.",
   "error.admin_only": "هذه الصفحة للمسؤولين فقط.",
   "error.generic": "حدث خطأ. يرجى المحاولة مجدداً.",
   "error.go_home": "العودة للرئيسية",
-
   "loading": "جار التحميل...",
   "save": "حفظ",
   "cancel": "إلغاء",
