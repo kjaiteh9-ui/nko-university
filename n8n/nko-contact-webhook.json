@@ -1,0 +1,74 @@
+{
+  "name": "NKO_Contact_Form",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "nko-contact",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "d4e5f6a7-4444-4444-4444-ddeeffgghhii",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "mode": "id",
+          "value": "1IEZs8a2QiZCHbiONdlWrqjqGTWJUhB-Qm2LzcDaQAuU"
+        },
+        "sheetName": {
+          "mode": "byName",
+          "value": "NKO_Contact"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {
+            "timestamp": "={{ $json.timestamp }}",
+            "name": "={{ $json.name }}",
+            "email": "={{ $json.email }}",
+            "subject": "={{ $json.subject }}",
+            "message": "={{ $json.message }}",
+            "type": "={{ $json.type }}"
+          }
+        },
+        "options": {}
+      },
+      "id": "e5f6a7b8-5555-5555-5555-eeffgghhiijj",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [460, 300],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "UXGzt0jGfgbDijpC",
+          "name": "Google Sheets account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\"success\": true}"
+      },
+      "id": "f6a7b8c9-6666-6666-6666-ffgghhiijjkk",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [680, 300]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [[{ "node": "Google Sheets", "type": "main", "index": 0 }]]
+    },
+    "Google Sheets": {
+      "main": [[{ "node": "Respond to Webhook", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": { "executionOrder": "v1" }
+}
