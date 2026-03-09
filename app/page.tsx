@@ -83,7 +83,7 @@ export default function HomePage() {
             </p>
 
             <div className="flex flex-wrap gap-3 justify-center mb-12">
-              <Link href="/signup" className="btn-gold">
+              <Link href="/courses" className="btn-gold">
                 {t('hero.cta_primary')} <ArrowRight size={16} />
               </Link>
               <Link href="/courses" className="btn-outline">
@@ -190,7 +190,7 @@ export default function HomePage() {
                   </div>
                 ))}
               </div>
-              <Link href="/signup" className="btn-gold mx-auto">
+              <Link href="/courses" className="btn-gold mx-auto">
                 Start Learning N&apos;Ko Today <ArrowRight size={16} />
               </Link>
             </div>
@@ -210,18 +210,18 @@ export default function HomePage() {
               { name: 'Mamadou D.', country: 'Guinée', text: 'Enfin une plateforme qui honore notre héritage. Le tuteur IA est incroyable!', level: 'Level 3' },
               { name: 'Aisha K.', country: 'Mali', text: 'I never thought I could read N\'Ko in just 2 months. The AI lessons are perfect.', level: 'Level 2' },
               { name: 'Ibrahim S.', country: 'Senegal', text: 'The tutor answers my questions at 2am when I study. Always available, any time.', level: 'Level 4' },
-            ].map((t, i) => (
+            ].map((testimonial, i) => (
               <div key={i} className="card">
                 <div className="flex gap-1 mb-3">
                   {[1,2,3,4,5].map(s => <Star key={s} size={12} fill="var(--gold)" style={{ color: 'var(--gold)' }} />)}
                 </div>
-                <p className="text-sm mb-4" style={{ color: 'var(--text)' }}>&ldquo;{t.text}&rdquo;</p>
+                <p className="text-sm mb-4" style={{ color: 'var(--text)' }}>&ldquo;{testimonial.text}&rdquo;</p>
                 <div className="flex items-center justify-between">
                   <div>
-                    <div className="text-sm font-semibold" style={{ color: 'var(--white)' }}>{t.name}</div>
-                    <div className="text-xs" style={{ color: 'var(--textd)' }}>{t.country}</div>
+                    <div className="text-sm font-semibold" style={{ color: 'var(--white)' }}>{testimonial.name}</div>
+                    <div className="text-xs" style={{ color: 'var(--textd)' }}>{testimonial.country}</div>
                   </div>
-                  <span className="tag text-xs">{t.level}</span>
+                  <span className="tag text-xs">{testimonial.level}</span>
                 </div>
               </div>
             ))}
@@ -239,7 +239,7 @@ export default function HomePage() {
               Join thousands of learners preserving and celebrating African linguistic heritage. Start free, today.
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
-              <Link href="/signup" className="btn-gold">
+              <Link href="/courses" className="btn-gold">
                 Start Learning Free <ArrowRight size={16} />
               </Link>
               <Link href="/placement-test" className="btn-outline">

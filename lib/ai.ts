@@ -1,4 +1,5 @@
 import OpenAI from 'openai';
+import type { LessonContent } from '@/lib/types';
 
 let _client: OpenAI | null = null;
 
@@ -80,21 +81,40 @@ export async function tutorChat(params: {
   lessonTitle: string;
   level: number;
   userLanguage: string;
+  lessonContent?: LessonContent | null;
 }): Promise<string> {
   const ai = getOpenAI();
   const levelNames = ['', 'Alphabet', 'Words', 'Grammar', 'Conversation', 'Reading', 'Advanced'];
 
+  // Build a concise lesson summary so the tutor knows the actual material
+  let lessonSummary = '';
+  if (params.lessonContent?.sections) {
+    const parts: string[] = [];
+    for (const s of params.lessonContent.sections.slice(0, 4)) {
+      if (s.title) parts.push(`Section: ${s.title}`);
+      if (s.body) parts.push(s.body.slice(0, 200));
+      if (s.rule) parts.push(`Grammar rule: ${s.rule}`);
+      if (s.characters?.length) {
+        parts.push(`Characters: ${s.characters.map(c => `${c.char}=${c.name}(${c.sound})`).join(', ')}`);
+      }
+      if (s.words?.length) {
+        parts.push(`Vocabulary: ${s.words.slice(0, 6).map(w => `${w.nko}=${w.en}`).join(', ')}`);
+      }
+    }
+    if (parts.length) lessonSummary = `\n\nLesson content:\n${parts.join('\n')}`;
+  }
+
   const system = `You are Musa, an expert and encouraging N'Ko language tutor at NKO Online University.
 Current student level: ${params.level} (${levelNames[params.level] ?? 'Unknown'})
-Current lesson: "${params.lessonTitle}"
+Current lesson: "${params.lessonTitle}"${lessonSummary}
 Respond in: ${params.userLanguage}
 
 Rules:
 - Be warm, encouraging, and culturally aware of African heritage
-- Use N'Ko script (ߒߞߏ) examples when relevant
+- Use N'Ko script (ߒߞߏ) examples when relevant — you know the actual lesson content above
 - Keep responses under 150 words unless explaining complex grammar
-- Always relate answers back to the current lesson context
-- If asked about something outside the lesson, gently redirect`;
+- Answer questions using the specific words, characters, and rules from this lesson
+- If asked about something outside this lesson, gently redirect`;
 
   const res = await ai.chat.completions.create({
     model: 'gpt-4o',

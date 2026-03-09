@@ -3,6 +3,8 @@
 import { useState, useEffect, useCallback } from 'react';
 import type { SupportedLang } from '@/lib/types';
 import { loadTranslations, getSavedLang, saveLang, isRTL, getLangConfig } from '@/lib/i18n';
+// Seed with English so keys never appear raw while locale loads
+import enTranslations from '@/locales/en.json';
 
 const LANG_EVENT = 'nko-lang-change';
 
@@ -16,7 +18,7 @@ interface UseTranslationReturn {
 
 export function useTranslation(): UseTranslationReturn {
   const [lang, setLangState] = useState<SupportedLang>('en');
-  const [translations, setTranslations] = useState<Record<string, string>>({});
+  const [translations, setTranslations] = useState<Record<string, string>>(enTranslations as Record<string, string>);
   const [isLoading, setIsLoading] = useState(true);
 
   const applyLang = useCallback((newLang: SupportedLang) => {

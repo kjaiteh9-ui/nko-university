@@ -9,6 +9,11 @@ export const metadata: Metadata = {
   description: 'The world\'s first AI-powered university for N\'Ko language. Learn from scratch with personalized AI lessons, adaptive quizzes, and a 24/7 AI tutor. Free forever.',
   keywords: ['N\'Ko', 'NKo', 'African language', 'Manding', 'online university', 'AI learning', 'Solomana Kante'],
   authors: [{ name: 'Karlang Diate' }],
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
   openGraph: {
     title: 'NKO Online University',
     description: 'AI-Powered N\'Ko & African Language Learning',

@@ -7,7 +7,7 @@ import { useTranslation } from '@/lib/hooks/useTranslation';
 import { getLocalizedField } from '@/lib/i18n';
 import { LEVEL_CONFIG } from '@/lib/types';
 import type { Course, Lesson } from '@/lib/types';
-import { BookOpen, Clock, ArrowRight, Loader } from 'lucide-react';
+import { BookOpen, Clock, ArrowRight } from 'lucide-react';
 
 export default function CoursesPage() {
   const { t, lang } = useTranslation();
@@ -69,9 +69,8 @@ export default function CoursesPage() {
       <section className="section">
         <div className="container">
           {courses.length === 0 ? (
-            <div className="text-center py-20">
-              <BookOpen size={48} style={{ color: 'var(--textd)', margin: '0 auto 1rem' }} />
-              <p style={{ color: 'var(--text)' }}>No courses published yet. Check back soon!</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <StaticCourseCard t={t} />
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -109,6 +108,46 @@ export default function CoursesPage() {
           </div>
         </div>
       </section>
+    </div>
+  );
+}
+
+// Shown when DB hasn't been set up yet — mirrors the real seeded course
+function StaticCourseCard({ t }: { t: (k: string) => string }) {
+  return (
+    <div className="card-gold overflow-hidden">
+      <div
+        className="h-36 rounded-lg mb-5 flex items-center justify-center"
+        style={{ background: 'linear-gradient(135deg, var(--forest) 0%, var(--bg) 100%)', border: '1px solid var(--bord2)' }}
+      >
+        <p className="nko-lg" style={{ color: 'var(--gold)', fontSize: '2.5rem' }}>ߒߞߏ</p>
+      </div>
+
+      <div className="flex items-center gap-2 mb-3">
+        <span className="tag">{t('courses.free')}</span>
+        <span className="tag-green tag">{LEVEL_CONFIG.length} {t('courses.levels')}</span>
+      </div>
+
+      <h3 className="mb-2">Learn N&apos;Ko from Zero</h3>
+      <p className="text-sm mb-5" style={{ color: 'var(--text)' }}>
+        A complete beginner-to-advanced journey through the N&apos;Ko language and script, the
+        writing system created by Solomana Kante in 1949 for the Manding languages of West Africa.
+      </p>
+
+      <div className="flex items-center justify-between mb-5">
+        <div className="flex items-center gap-1.5 text-xs" style={{ color: 'var(--textd)' }}>
+          <BookOpen size={14} />
+          <span>18 {t('courses.lessons')}</span>
+        </div>
+        <div className="flex items-center gap-1.5 text-xs" style={{ color: 'var(--textd)' }}>
+          <Clock size={14} />
+          <span>6h total</span>
+        </div>
+      </div>
+
+      <Link href="/placement-test" className="btn-gold w-full justify-center">
+        {t('courses.start')} <ArrowRight size={16} />
+      </Link>
     </div>
   );
 }

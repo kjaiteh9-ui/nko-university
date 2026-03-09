@@ -21,7 +21,7 @@ function checkRateLimit(key: string): boolean {
 export async function POST(req: NextRequest) {
   const ip = req.headers.get('x-forwarded-for') ?? 'unknown';
   const body = await req.json().catch(() => ({}));
-  const { messages, lessonTitle, level, userLanguage, userId } = body;
+  const { messages, lessonTitle, level, userLanguage, userId, lessonContent } = body;
 
   const rateKey = userId ?? ip;
   if (!checkRateLimit(rateKey)) {
@@ -38,10 +38,11 @@ export async function POST(req: NextRequest) {
 
   try {
     const reply = await tutorChat({
-      messages: messages.slice(-10), // Last 10 messages for context
+      messages: messages.slice(-10),
       lessonTitle: lessonTitle ?? 'N\'Ko Lesson',
       level: Number(level) || 1,
       userLanguage: userLanguage ?? 'en',
+      lessonContent: lessonContent ?? null,
     });
     return NextResponse.json({ reply });
   } catch (err) {

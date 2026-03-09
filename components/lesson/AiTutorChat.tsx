@@ -3,16 +3,17 @@
 import { useState, useRef, useEffect } from 'react';
 import { Send, Bot, User, Loader } from 'lucide-react';
 import { useTranslation } from '@/lib/hooks/useTranslation';
-import type { ChatMessage } from '@/lib/types';
+import type { ChatMessage, LessonContent } from '@/lib/types';
 
 interface Props {
   lessonId: string;
   lessonTitle: string;
   level: number;
   userId?: string;
+  lessonContent?: LessonContent | null;
 }
 
-export default function AiTutorChat({ lessonId, lessonTitle, level, userId }: Props) {
+export default function AiTutorChat({ lessonId, lessonTitle, level, userId, lessonContent }: Props) {
   const { t, lang } = useTranslation();
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
@@ -49,6 +50,7 @@ export default function AiTutorChat({ lessonId, lessonTitle, level, userId }: Pr
           userLanguage: lang,
           lessonId,
           userId,
+          lessonContent,
         }),
       });
       const data = await res.json();
@@ -124,7 +126,7 @@ export default function AiTutorChat({ lessonId, lessonTitle, level, userId }: Pr
       <div className="p-4 border-t border-[var(--bord2)]">
         {!userId && (
           <p className="text-xs mb-2 text-center" style={{ color: 'var(--textd)' }}>
-            <a href="/signup" style={{ color: 'var(--gold)' }}>Sign up</a> to save chat history
+            <a href="/login" style={{ color: 'var(--gold)' }}>Sign in</a> to save your chat history
           </p>
         )}
         <div className="flex gap-2">

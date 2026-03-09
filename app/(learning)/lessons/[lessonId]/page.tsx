@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useParams, useRouter } from 'next/navigation';
+import { useParams } from 'next/navigation';
 import { getSupabase } from '@/lib/supabase';
 import { useUser } from '@/lib/hooks/useUser';
 import { useTranslation } from '@/lib/hooks/useTranslation';
@@ -21,8 +21,7 @@ type ActiveTab = 'lesson' | 'quiz' | 'tutor';
 export default function LessonPage() {
   const { lessonId } = useParams<{ lessonId: string }>();
   const { t, lang } = useTranslation();
-  const { user, profile } = useUser();
-  const router = useRouter();
+  const { user } = useUser();
 
   const [lesson, setLesson] = useState<Lesson | null>(null);
   const [allLessons, setAllLessons] = useState<Lesson[]>([]);
@@ -85,7 +84,7 @@ export default function LessonPage() {
   }, [lessonId, user]);
 
   async function markComplete() {
-    if (!user) { toast.error('Sign in to track progress.'); return; }
+    if (!user) return;
     setMarking(true);
     await getSupabase().from('progress').upsert({
       user_id: user.id,
@@ -207,7 +206,7 @@ export default function LessonPage() {
                   border: activeTab === tab ? '1px solid var(--border)' : '1px solid transparent',
                 }}
               >
-                {tab === 'lesson' && <><BookOpen size={12} className="inline mr-1" />{t('lesson.exercises').split(' ')[0]}</>}
+                {tab === 'lesson' && <><BookOpen size={12} className="inline mr-1" />{t('lesson.lesson')}</>}
                 {tab === 'quiz' && <><BookOpen size={12} className="inline mr-1" />{t('lesson.quiz')}</>}
                 {tab === 'tutor' && <><MessageSquare size={12} className="inline mr-1" />{t('lesson.ai_tutor')}</>}
               </button>
@@ -274,6 +273,7 @@ export default function LessonPage() {
                 lessonTitle={title}
                 level={lesson.level}
                 userId={user?.id}
+                lessonContent={lesson.content_json}
               />
             </div>
           )}
